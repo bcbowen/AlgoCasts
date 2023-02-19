@@ -10,15 +10,36 @@
 
 function chunk(array, size) {
     let result = []; 
+    let subResult = [];
+    for (let i of array)
+    {
+        if (subResult.length === size) {
+            result.push(subResult); 
+            subResult = [];
+        }
+        subResult.push(i);
+    }
+    if (subResult.length > 0)
+    {
+        result.push(subResult); 
+    }
+
+    return result;
+}
+
+module.exports = chunk;
+
+/*
+function chunk(array, size) {
+    let result = []; 
     let i = 0;
     while (i < array.length) {
         let subResult = [];
-        for (let j = 0; j < size; j++) {
+        for (let j = 0; j < size && i < array.length; j++) {
             subResult.push(array[i++]);
         }
         result.push(subResult);
     }
     return result;
 }
-
-module.exports = chunk;
+*/
