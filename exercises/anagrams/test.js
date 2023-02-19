@@ -9,6 +9,10 @@ test('"hello" is an anagram of "llohe"', () => {
 });
 
 test('"Whoa! Hi!" is an anagram of "Hi! Whoa!"', () => {
+  expect(anagrams('RAIL! SAFETY!', 'fairy tales')).toBeTruthy();
+});
+
+test('"Whoa! Hi!" is an anagram of "Hi! Whoa!"', () => {
   expect(anagrams('Whoa! Hi!', 'Hi! Whoa!')).toBeTruthy();
 });
 

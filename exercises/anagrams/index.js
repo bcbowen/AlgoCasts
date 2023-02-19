@@ -11,11 +11,12 @@
 function anagrams(stringA, stringB) {
     let a = {}; 
     let b = {};
-    for(let char of stringA) {
+    const pattern = /[^\w]/g; 
+    for(let char of stringA.replace(pattern, "").toLowerCase()) {
         a[char] = a[char] + 1 || 1; 
     }
     
-    for(let char of stringB) {
+    for(let char of stringB.replace(pattern, "").toLowerCase()) {
         b[char] = b[char] + 1 || 1; 
     }
 
