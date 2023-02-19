@@ -11,11 +11,11 @@
 function anagrams(stringA, stringB) {
     let a = {}; 
     let b = {};
-    for(char of stringA) {
+    for(let char of stringA) {
         a[char] = a[char] + 1 || 1; 
     }
     
-    for(char of stringB) {
+    for(let char of stringB) {
         b[char] = b[char] + 1 || 1; 
     }
 
