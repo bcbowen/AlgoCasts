@@ -10,18 +10,11 @@
 
 function chunk(array, size) {
     let result = []; 
-    let subResult = [];
-    for (let i of array)
+    let index = 0;
+    while (index < array.length)
     {
-        if (subResult.length === size) {
-            result.push(subResult); 
-            subResult = [];
-        }
-        subResult.push(i);
-    }
-    if (subResult.length > 0)
-    {
-        result.push(subResult); 
+        result.push(array.slice(index, index + size));
+        index += size;
     }
 
     return result;
@@ -42,4 +35,24 @@ function chunk(array, size) {
     }
     return result;
 }
+
+function chunk(array, size) {
+    let result = []; 
+    let subResult = [];
+    for (let i of array)
+    {
+        if (subResult.length === size) {
+            result.push(subResult); 
+            subResult = [];
+        }
+        subResult.push(i);
+    }
+    if (subResult.length > 0)
+    {
+        result.push(subResult); 
+    }
+
+    return result;
+}
+
 */
