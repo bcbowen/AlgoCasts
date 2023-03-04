@@ -17,45 +17,34 @@
 
 function matrix(n) {
   let spiral = [];
-  let row = [];
   for (let i = 0; i < n; i++) {
-    for (let j = 0; j < n; j++) {
-      row.push(0);
-    }
-    spiral.push(row);
+    spiral.push([]);
   }
 
   let minRow = 0;
   let maxRow = n - 1;
   let minCol = 0;
   let maxCol = n - 1;
-  let x = 0;
-  let y = 0;
-  let i = 1;
-  const maxI = n * n;
-  while (i <= maxI) {
-    while (x++ <= maxCol) {
-      spiral[y][x] = i;
+  let counter = 1;
+  while (minRow < maxRow && minCol < maxCol) {
+    for (let i = minCol; i <= maxCol; i++) {
+      spiral[minRow][i] = counter++;
     }
-    i++;
     minRow++;
 
-    while (y++ <= maxRow) {
-      spiral[y][x] = i;
+    for (let i = minRow; i <= maxRow; i++) {
+      spiral[i][maxCol] = counter++;
     }
-    i++;
     maxCol--;
 
-    while (x-- >= minCol) {
-      spiral[y][x] = i;
+    for (let i = maxCol; i >= minCol; i--) {
+      spiral[maxRow][i] = counter++;
     }
-    i++;
     maxRow--;
 
-    while (y-- >= minRow) {
-      spiral[y][x] = i;
+    for (let i = maxRow; i >= minRow; i--) {
+      spiral[i][minCol] = counter++;
     }
-    i++;
     minCol++;
   }
 
