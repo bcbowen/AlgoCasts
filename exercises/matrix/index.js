@@ -26,7 +26,7 @@ function matrix(n) {
   let minCol = 0;
   let maxCol = n - 1;
   let counter = 1;
-  while (minRow < maxRow && minCol < maxCol) {
+  while (minRow <= maxRow && minCol <= maxCol) {
     for (let i = minCol; i <= maxCol; i++) {
       spiral[minRow][i] = counter++;
     }
