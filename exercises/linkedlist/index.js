@@ -34,6 +34,8 @@ class LinkedList {
     }
 
     getLast(){
+        if(this.head == null || this.head.next == null) return this.head;
+
         let node = this.head;
         while(node.next != null)
         {
@@ -74,6 +76,59 @@ class LinkedList {
         } else {
             this.head = newNode;
         }
+    }
+
+    getAt(index) {
+        let node = this.head;
+        let counter = 0; 
+        while (node && (counter < index))
+        {
+            node = node.next;
+            counter++;
+        }
+
+        return node;
+    }
+
+    removeAt(index) {
+        if (this.head === null) return;
+
+        if (index === 0)
+        {
+            this.head = this.head.next;
+        }
+
+        let previous = this.getAt(index - 1);
+        if (!previous || !previous.next) {
+            return;
+        }
+
+        previous.next = previous.next.next;
+    }
+
+    insertAt(value, index){
+        const newNode = new Node(value);
+        if (this.head === null)
+        {
+            this.head = newNode; 
+            return;
+        }
+
+        if (index === 0)
+        {
+            newNode.next = this.head;
+            this.head = newNode;
+            return;
+        }
+
+        let previous = this.getAt(index - 1); 
+        if (previous === null){
+            previous = this.getLast();
+        }
+
+        newNode.next = previous.next;
+        previous.next = newNode;
+
     }
 }
 
