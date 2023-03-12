@@ -20,7 +20,7 @@ function levelWidth(root) {
     result.push(levelCount);
 
     for (let i = 0; i < levelCount; i++) {
-      let node = q.pop();
+      let node = q.shift();
       for (let child of node.children) {
         q.push(child);
       }
